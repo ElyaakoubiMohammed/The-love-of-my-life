@@ -3,8 +3,9 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'The love of my life',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  icons: {
+    icon: 'https://cdn-icons-png.flaticon.com/512/833/833472.png',
+  },
 }
 
 export default function RootLayout({
