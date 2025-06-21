@@ -68,6 +68,7 @@ interface GameState {
   achievements: string[]
   photoSessionsCompleted: number
   catsPlayedWithCount: number
+
 }
 
 interface ShopItem {
@@ -260,12 +261,12 @@ const achievements: Achievement[] = [
   {
     id: "coin_collector",
     name: "Coin Collector",
-    description: "Earn 10,000 coins total",
-    requirement: "Earn 10,000 coins",
+    description: "Earn 5000 coins total",
+    requirement: "Earn 5000 coins",
     reward: { gems: 100 },
     unlocked: false,
     progress: 0,
-    maxProgress: 10000,
+    maxProgress: 5000,
     icon: "💰",
   },
   {
@@ -279,17 +280,7 @@ const achievements: Achievement[] = [
     maxProgress: 7,
     icon: "🔥",
   },
-  {
-    id: "clean_freak",
-    name: "Clean Freak",
-    description: "Groom all cats in one day",
-    requirement: "Groom all cats in one day",
-    reward: { coins: 200, gems: 10 },
-    unlocked: false,
-    progress: 0,
-    maxProgress: 1,
-    icon: "🛁"
-  },
+
   {
     id: "playtime_champion",
     name: "Playtime Champion",
@@ -1000,12 +991,17 @@ export default function VirtualCatCafe() {
             updates = {
               ...updates,
               happiness: Math.min(100, cat.happiness + 25),
+
               energy: Math.max(0, cat.energy - 20),
               affection: Math.min(100, cat.affection + 12),
               mood: "playful" as Cat["mood"],
             }
             coinReward = 20
             expReward = 15
+            setGameState((prev) => ({
+              ...prev,
+              catsPlayedWithCount: (prev.catsPlayedWithCount || 0) + 1
+            }))
             break
           case "groom":
             updates = {
@@ -1040,6 +1036,10 @@ export default function VirtualCatCafe() {
             coinReward = 50 + (cat.rarity === "legendary" ? 100 : cat.rarity === "epic" ? 50 : 25)
             expReward = 25
             addNotification(`📸 Beautiful photo of ${cat.name}! +${coinReward} coins!`, "success")
+            setGameState((prev) => ({
+              ...prev,
+              photoSessionsCompleted: (prev.photoSessionsCompleted || 0) + 1
+            }))
             break
         }
 
@@ -1209,13 +1209,6 @@ export default function VirtualCatCafe() {
             newProgress = gameState.dailyStreak
             break
 
-          // ✅ Add these new cases:
-          case "clean_freak":
-            // Groom all cats in one day
-            newProgress = adoptedCats.every((cat) => cat.cleanliness >= 100)
-              ? achievement.maxProgress
-              : achievement.progress
-            break
 
           case "photo_master":
             // Complete 5 photo sessions
