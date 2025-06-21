@@ -9,7 +9,7 @@ const storyMilestones = [
     date: "The Beginning",
     title: "When I First Saw You",
     description:
-      "The first time my eyes found you, everything inside me shifted. I didn't just see you, I felt something awaken, something that told me nothing would ever matter as much again.",
+      "The first time my eyes found you, we were just friends sharing everyday moments. I didn’t realize then, but something inside me quietly shifted, waiting for the right time to bloom.",
     icon: Star,
     color: "from-pink-400 to-rose-400",
   },
@@ -17,7 +17,7 @@ const storyMilestones = [
     date: "First Conversation",
     title: "Your Voice Took Over My Heart",
     description:
-      "The moment you spoke to me, it wasn't just your words, it was the way they reached inside and stayed. Every sound, every pause, every breath became part of me.",
+      "When you spoke, it wasn’t just your words — it was how they reached inside me and stayed. Over time, every sound, every pause, every breath became part of a feeling I couldn’t ignore.",
     icon: Heart,
     color: "from-rose-400 to-red-400",
   },

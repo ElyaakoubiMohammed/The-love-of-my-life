@@ -71,7 +71,7 @@ Of two hearts beating as just one.
 
 In dreams we travel to Paris,
 Where love stories never miss,
-We kiss beneath the Eiffel Tower,
+We hug beneath the Eiffel Tower,
 In that magical, perfect hour.
 
 I dream of growing old with you,
