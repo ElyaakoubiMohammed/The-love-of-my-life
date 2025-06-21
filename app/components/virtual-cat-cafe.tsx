@@ -66,6 +66,8 @@ interface GameState {
   dailyStreak: number
   totalCatsAdopted: number
   achievements: string[]
+  photoSessionsCompleted: number
+  catsPlayedWithCount: number
 }
 
 interface ShopItem {
@@ -277,6 +279,61 @@ const achievements: Achievement[] = [
     maxProgress: 7,
     icon: "🔥",
   },
+  {
+    id: "clean_freak",
+    name: "Clean Freak",
+    description: "Groom all cats in one day",
+    requirement: "Groom all cats in one day",
+    reward: { coins: 200, gems: 10 },
+    unlocked: false,
+    progress: 0,
+    maxProgress: 1,
+    icon: "🛁"
+  },
+  {
+    id: "playtime_champion",
+    name: "Playtime Champion",
+    description: "Play with 5 different cats",
+    requirement: "Interact with 5 cats via play",
+    reward: { coins: 300, gems: 15 },
+    unlocked: false,
+    progress: 0,
+    maxProgress: 5,
+    icon: "🔴"
+  },
+  {
+    id: "treasure_finder",
+    name: "Treasure Finder",
+    description: "Win the Treasure Hunt mini-game",
+    requirement: "Complete Treasure Hunt",
+    reward: { gems: 25 },
+    unlocked: false,
+    progress: 0,
+    maxProgress: 1,
+    icon: "🗺️"
+  },
+  {
+    id: "epic_collector",
+    name: "Epic Collector",
+    description: "Adopt 3 epic or legendary cats",
+    requirement: "Adopt 3 rare/epic/legendary cats",
+    reward: { gems: 50 },
+    unlocked: false,
+    progress: 0,
+    maxProgress: 3,
+    icon: "⭐"
+  },
+  {
+    id: "photo_master",
+    name: "Photo Master",
+    description: "Complete 5 photo sessions",
+    requirement: "Take photos 5 times",
+    reward: { coins: 400, gems: 20 },
+    unlocked: false,
+    progress: 0,
+    maxProgress: 5,
+    icon: "📸"
+  }
 ]
 
 const miniGames: MiniGame[] = [
@@ -305,7 +362,7 @@ const miniGames: MiniGame[] = [
     difficulty: "hard",
     reward: { coins: 150, experience: 75 },
     icon: "🧩",
-    unlocked: false,
+    unlocked: true,
   },
   {
     id: "dance_party",
@@ -314,7 +371,7 @@ const miniGames: MiniGame[] = [
     difficulty: "medium",
     reward: { coins: 100, experience: 50 },
     icon: "💃",
-    unlocked: false,
+    unlocked: true,
   },
   {
     id: "treasure_hunt",
@@ -323,7 +380,7 @@ const miniGames: MiniGame[] = [
     difficulty: "hard",
     reward: { coins: 200, experience: 100 },
     icon: "🗺️",
-    unlocked: false,
+    unlocked: true,
   },
 ]
 
@@ -563,7 +620,7 @@ const generateCat = (forceRarity?: string): Cat => {
   const baseLevel = rarity === "legendary" ? 5 : rarity === "epic" ? 3 : rarity === "rare" ? 2 : 1
 
   return {
-    id: `cat-${Date.now()}-${Math.random()}`,
+    id: `cat-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
     name: generateCatName(),
     breed: breed.name,
     age: Math.floor(Math.random() * 8) + 1,
@@ -631,84 +688,62 @@ const weightedRandom = (weights: Record<string, number>) => {
 
 const generateCatName = () => {
   const prefixes = [
-    "Captain",
+    "Mr",
+    "Miss",
     "Sir",
     "Lady",
-    "Baron",
-    "Countess",
-    "Duke",
-    "Empress",
-    "Shadow",
-    "Midnight",
-    "Phantom",
+    "Master",
+    "Missy",
+    "Captain",
+    "Professor",
+    "Doctor",
+    "King",
     "Queen",
-    "Lord",
-    "Mystic",
-    "Rogue",
-    "Valkyrie",
-    "Whisker",
-    "Nebula",
-    "Storm",
-    "Sable",
-    "Cosmo",
+    "Duke",
+    "Duchess",
+    "Prince",
+    "Princess",
   ]
 
   const names = [
-    "Nebula",
-    "Nyx",
-    "Zephyr",
-    "Echo",
-    "Nova",
-    "Raven",
-    "Sable",
-    "Jinx",
-    "Orion",
-    "Lumos",
-    "Fable",
-    "Pixel",
-    "Vortex",
-    "Blaze",
-    "Quartz",
-    "Cinder",
-    "Ember",
-    "Vesper",
-    "Onyx",
-    "Rogue",
-    "Shade",
-    "Indigo",
-    "Rune",
-    "Draco",
-    "Celeste",
-    "Frost",
-    "Kismet",
     "Luna",
-    "Solstice",
-    "Twilight",
+    "Milo",
+    "Oliver",
+    "Leo",
+    "Bella",
+    "Chloe",
+    "Simba",
+    "Loki",
+    "Nala",
+    "Shadow",
+    "Misty",
+    "Smokey",
+    "Cleo",
+    "Sophie",
+    "Tigger",
+    "Oscar",
+    "Jasper",
+    "Felix",
+    "Zoe",
+    "Gizmo"
   ]
 
   const suffixes = [
-    "the Enigmatic",
-    "of the Night",
-    "the Fierce",
-    "the Cunning",
-    "the Radiant",
-    "the Mysterious",
-    "the Swift",
-    "the Fearless",
-    "the Silent",
-    "the Valiant",
-    "the Untamed",
-    "the Majestic",
-    "the Spectral",
-    "the Glorious",
-    "the Agile",
-    "the Legendary",
-    "the Arcane",
-    "the Wandering",
-    "the Noble",
-    ""
+    "",
+    "Jr",
+    "Sr",
+    "II",
+    "III",
+    "the Brave",
+    "the Bold",
+    "the Quick",
+    "the Clever",
+    "the Gentle",
+    "the Friendly",
+    "the Curious",
+    "the Playful",
+    "the Loyal",
   ]
-
 
   const prefix = prefixes[Math.floor(Math.random() * prefixes.length)]
   const name = names[Math.floor(Math.random() * names.length)]
@@ -716,6 +751,7 @@ const generateCatName = () => {
 
   return [prefix, name, suffix].filter(Boolean).join(" ")
 }
+
 
 const generateAdoptionStory = () => {
   const stories = [
@@ -763,6 +799,8 @@ export default function VirtualCatCafe() {
     dailyStreak: 1,
     totalCatsAdopted: 0,
     achievements: [],
+    photoSessionsCompleted: 0,
+    catsPlayedWithCount: 0,
   })
   const [inventory, setInventory] = useState({
     food: 10,
@@ -774,12 +812,8 @@ export default function VirtualCatCafe() {
   })
   const [notifications, setNotifications] = useState<Array<{ id: string; message: string; type: string }>>([])
   const [achievementsList, setAchievementsList] = useState<Achievement[]>(achievements.map((a) => ({ ...a })))
-  const [miniGamesList, setMiniGamesList] = useState<MiniGame[]>(
-    miniGames.map((game) => ({
-      ...game,
-      unlocked: game.id === "laser_chase" || game.id === "treat_toss" ? true : false,
-    })),
-  )
+  const [miniGamesList, setMiniGamesList] = useState<MiniGame[]>(miniGames);
+
 
   // Initialize cats with better distribution
   useEffect(() => {
@@ -792,6 +826,15 @@ export default function VirtualCatCafe() {
       generateCat("rare"),
       generateCat("legendary"),
       generateCat("common"),
+      generateCat(),
+      generateCat(),
+      generateCat(),
+      generateCat(),
+      generateCat(),
+      generateCat(),
+      generateCat(),
+      generateCat(),
+
     ]
     setAvailableCats(initialCats)
   }, [])
@@ -812,7 +855,8 @@ export default function VirtualCatCafe() {
 
             return {
               ...cat,
-              position: { x: newX, y: newY },
+              position: { ...cat.position, x: newX, y: newY }, // ✅ Spread position too
+
               currentActivity:
                 Math.random() > 0.95
                   ? activities[Math.floor(Math.random() * activities.length)].name
@@ -1144,23 +1188,55 @@ export default function VirtualCatCafe() {
           case "first_adoption":
             newProgress = gameState.totalCatsAdopted >= 1 ? 1 : 0
             break
+
           case "cat_collector":
             newProgress = gameState.totalCatsAdopted
             break
+
           case "legendary_owner":
             newProgress = adoptedCats.filter((cat) => cat.rarity === "legendary").length
             break
+
           case "happiness_master":
             newProgress = adoptedCats.length > 0 && adoptedCats.every((cat) => cat.happiness >= 100) ? 1 : 0
             break
+
           case "coin_collector":
             newProgress = gameState.coins
             break
+
           case "daily_devotion":
             newProgress = gameState.dailyStreak
             break
-        }
 
+          // ✅ Add these new cases:
+          case "clean_freak":
+            // Groom all cats in one day
+            newProgress = adoptedCats.every((cat) => cat.cleanliness >= 100)
+              ? achievement.maxProgress
+              : achievement.progress
+            break
+
+          case "photo_master":
+            // Complete 5 photo sessions
+            newProgress = gameState.photoSessionsCompleted || 0
+            break
+
+          case "playtime_champion":
+            // Play with 5 different cats
+            newProgress = gameState.catsPlayedWithCount || 0
+            break
+
+          case "epic_collector":
+            // Adopt 3 rare/epic/legendary cats
+            newProgress = adoptedCats.filter((cat) =>
+              ["rare", "epic", "legendary"].includes(cat.rarity)
+            ).length
+            break
+
+          default:
+            break
+        }
         const wasUnlocked = achievement.unlocked
         const isNowUnlocked = newProgress >= achievement.maxProgress
 
@@ -1185,7 +1261,14 @@ export default function VirtualCatCafe() {
 
   useEffect(() => {
     checkAchievements()
-  }, [gameState.totalCatsAdopted, gameState.coins, gameState.dailyStreak, adoptedCats])
+  }, [
+    gameState.totalCatsAdopted,
+    gameState.coins,
+    gameState.dailyStreak,
+    gameState.photoSessionsCompleted, // ✅ Add this
+    gameState.catsPlayedWithCount,     // ✅ Add this
+    adoptedCats
+  ])
 
   const getRarityColor = (rarity: string) => {
     switch (rarity) {

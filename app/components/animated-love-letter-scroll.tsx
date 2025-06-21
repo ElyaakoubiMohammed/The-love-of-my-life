@@ -16,13 +16,13 @@ You have this amazing ability to light up any room you enter. Your laugh is like
 
 I love how you get excited about the things you're passionate about. I love how you care so deeply for the people in your life. I love how you dream big and aren't afraid to chase those dreams. I love how you make even the ordinary moments feel extraordinary just by being there.
 
-Every day, I find new reasons to love you. The way you scrunch your nose when you're thinking, the way you play with your hair when you're nervous, the way you get sleepy and cuddly in the evening - these little things that make you uniquely you are what I treasure most.
+Every day, I find new reasons to love you. The way you look when you're thinking, the way you play with your hair or look away when you're shy, these little things that make you uniquely you are what I treasure most.
 
 I want you to know that my love for you isn't just a feeling - it's a choice I make every single day. I choose to love you in your happy moments and your sad ones, in your confident moments and your vulnerable ones, in your silly moments and your serious ones. I love all of you, completely and unconditionally.
 
 I dream of a future with you my beautiful angelic queen. I dream of waking up next to you every morning, of sharing coffee and conversations, of exploring the world together, of creating beautiful memories that we'll cherish forever. I dream of being the person who gets to love you for the rest of my life.
 
-You are my sunshine on cloudy days, my calm in the storm, my hope when things seem impossible. You are my best friend, my greatest love, my everything. I am so grateful that you exist, that our paths crossed, that I get to experience the miracle of loving you.
+You are my sunshine on cloudy days, my calm in the storm, my hope when things seem impossible. You are the love of my life, my greatest love, my everything. I am so grateful that you exist, that our paths crossed, that I get to experience the miracle of loving you.
 
 I know we're not together right now, but that doesn't change how I feel about you. If anything, it makes me love you more because I know that what I feel for you is real, pure, and unconditional. You don't have to love me back for me to love you - I love you simply because you are you.
 

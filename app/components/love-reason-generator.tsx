@@ -48,7 +48,6 @@ const loveReasons = [
   "The way you get sleepy and cuddly in the evening",
   "Your ability to make any place feel like home",
   "You have the most expressive and beautiful face",
-  "The way you care about your family and friends",
   "Your love for adventure and trying new things",
   "You make me feel understood and accepted",
   "The way you twirl when you're happy",

@@ -24,7 +24,7 @@ const bottleMessages = [
   {
     id: 4,
     message:
-      "When I close my eyes, I see your face, and suddenly everything in the world feels perfect. Your face is my safe haven, my peace in the storm, my home in this chaotic world. Every feature is perfectly crafted, from your sparkling eyes that hold entire galaxies, to your soft lips that I dream of kissing, to the gentle curve of your cheeks when you smile.",
+      "When I close my eyes, I see your face, and suddenly everything in the world feels perfect. Your face is my safe haven, my peace in the storm, my home in this chaotic world. Every feature is perfectly crafted, From your sparkling eyes that hold entire galaxies, to the tender curve of your smile and the soft touch of your presence that lingers like a sweet melody in my soul, to the gentle curve of your cheeks when you smile.",
   },
   {
     id: 5,

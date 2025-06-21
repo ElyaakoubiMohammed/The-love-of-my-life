@@ -112,7 +112,6 @@ You find the magic in each day,
 In your own special, lovely way.
 
 Your compassion knows no end,
-You're everyone's most faithful friend,
 Your strength inspires, your love heals,
 You show me how true goodness feels.
 
@@ -297,10 +296,6 @@ Of challenges you must embrace,
 You never back down from a fight,
 When you know that you are right.
 
-I love the way you love your friends,
-On whom your loyalty depends,
-You'd move the mountains for their sake,
-Whatever sacrifice you'd make.
 
 I love your morning sleepy voice,
 In you I've made my final choice,
@@ -590,7 +585,7 @@ The joy my heart will always bringing.
 So take my hand and never fall,
 I'll catch you when the world feels small,
 For in your eyes I'm whole again,
-My queen, my muse, my heart's true friend.`
+My queen, my muse, my heart's true love and home.`
   },
   {
     title: "Eternal Flame of You",
