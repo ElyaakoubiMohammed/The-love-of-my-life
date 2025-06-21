@@ -292,17 +292,7 @@ const achievements: Achievement[] = [
     maxProgress: 5,
     icon: "🔴"
   },
-  {
-    id: "treasure_finder",
-    name: "Treasure Finder",
-    description: "Win the Treasure Hunt mini-game",
-    requirement: "Complete Treasure Hunt",
-    reward: { gems: 25 },
-    unlocked: false,
-    progress: 0,
-    maxProgress: 1,
-    icon: "🗺️"
-  },
+
   {
     id: "epic_collector",
     name: "Epic Collector",
@@ -792,6 +782,7 @@ export default function VirtualCatCafe() {
     achievements: [],
     photoSessionsCompleted: 0,
     catsPlayedWithCount: 0,
+
   })
   const [inventory, setInventory] = useState({
     food: 10,
@@ -948,10 +939,7 @@ export default function VirtualCatCafe() {
         addNotification("Not enough coins!", "error")
         return
       }
-      if (resource !== "coins" && inventory[resource as keyof typeof inventory] < amount) {
-        addNotification(`Not enough ${resource}!`, "error")
-        return
-      }
+
     }
 
     // Deduct resources
@@ -1035,12 +1023,20 @@ export default function VirtualCatCafe() {
           case "photo":
             coinReward = 50 + (cat.rarity === "legendary" ? 100 : cat.rarity === "epic" ? 50 : 25)
             expReward = 25
-            addNotification(`📸 Beautiful photo of ${cat.name}! +${coinReward} coins!`, "success")
+
+            // Increment the photo session count BEFORE returning
             setGameState((prev) => ({
               ...prev,
               photoSessionsCompleted: (prev.photoSessionsCompleted || 0) + 1
             }))
-            break
+
+            addNotification(`📸 Beautiful photo of ${cat.name}! +${coinReward} coins!`, "success")
+
+            return {
+              ...cat,
+              experience: cat.experience + expReward,
+              level: Math.floor((cat.experience + expReward) / 100) + 1,
+            }
         }
 
         setGameState((prev) => ({ ...prev, coins: prev.coins + coinReward }))
@@ -1100,6 +1096,8 @@ export default function VirtualCatCafe() {
         ...prev,
         coins: prev.coins + coinReward,
       }))
+
+
 
       // Give experience to all adopted cats
       setAdoptedCats((prev) =>
